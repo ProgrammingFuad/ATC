@@ -24,41 +24,40 @@ import javax.swing.Timer;
 
 /**
  *
- * @author matankay
  * @author FuadMohamoud
  */
 public class userInterface extends javax.swing.JPanel {
 
     /**
-     * Creates new form 
+     * Creates new form
      */
     public userInterface() {
         initComponents();
     }
 
-    
-      
+
+
     protected static final int PLAY_TIME = 7000;
 
     private int targetX;
     private int targetY;
     private int targetX2;
     private int targetY2;
-    
+
     private long startTime;
     private int startX;
     private int startX2;
-    private int startY; 
-    private int startY2; 
-    
+    private int startY;
+    private int startY2;
+
     private int startX3;
-    private int startY3; 
-    
+    private int startY3;
+
     private Color[] colors = new Color[]{Color.ORANGE, Color.CYAN};
     private int colorIndex;
      int speed = 250;
     int count=0;
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -640,18 +639,18 @@ public class userInterface extends javax.swing.JPanel {
         startY = Plane4.getY();
         //plane1.setVisible(true);
          controlMessage.append("Flight AA263 Landing Approved");
-                
+
         targetX =  airportRunWay.getX();
         targetY =  airportRunWay.getY();
-        
-        
+
+
         Timer timer = new Timer(340, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int x = Plane4.getX();
                 int y = Plane4.getY();
 
-                
+
                 long duration = System.currentTimeMillis() - startTime;
                 float progress = (float)duration / (float)PLAY_TIME;
 
@@ -663,7 +662,7 @@ public class userInterface extends javax.swing.JPanel {
 
                 x = startX + (int)Math.round((targetX - startX) * progress);
                 y = startY + (int)Math.round((targetY - startY) * progress);
-                        
+
                 Plane4.setLocation(x, y);
                 if(x == targetX && y == targetY){
                     Plane4.setVisible(false);
@@ -671,45 +670,45 @@ public class userInterface extends javax.swing.JPanel {
                 }
             }
 
-            
+
         });
-        
-        
+
+
         startTime = System.currentTimeMillis();
 
         timer.start();
-        
+
        speedPlane1LBL2.setText(String.valueOf(speed-10));
-      
-        
-        
-        
-     
-        
-        
-        
+
+
+
+
+
+
+
+
     }//GEN-LAST:event_AircraftLandingMouseClicked
 
     private void AircraftDepartureMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AircraftDepartureMouseClicked
-       
-        
+
+
        AircraftDeparture.setVisible(true);
         startX = Plane2.getX();
         startY = Plane2.getY();
         //plane1.setVisible(true);
          controlMessage.append("\nFlight AA263 Departure Approved\n");
-                
+
         targetX =  ExitingPlane.getX();
         targetY =  ExitingPlane.getY();
-        
-        
+
+
         Timer timer = new Timer(340, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int x = Plane2.getX();
                 int y = Plane2.getY();
 
-                
+
                 long duration = System.currentTimeMillis() - startTime;
                 float progress = (float)duration / (float)PLAY_TIME;
 
@@ -721,46 +720,46 @@ public class userInterface extends javax.swing.JPanel {
 
                 x = startX + (int)Math.round((targetX - startX) * progress);
                 y = startY + (int)Math.round((targetY - startY) * progress);
-                        
+
                 Plane2.setLocation(x, y);
                 if(x == targetX && y == targetY){
                     Plane2.setVisible(false);
-                    
+
                 }
             }
 
-            
+
         });
-        
-        
+
+
         startTime = System.currentTimeMillis();
 
         timer.start();
-        
+
        speedPlane1LBL2.setText(String.valueOf(speed-10));
     }//GEN-LAST:event_AircraftDepartureMouseClicked
 
     private void CollisionAvoidanceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CollisionAvoidanceMouseClicked
-       
-         
+
+
        Plane3.setVisible(true);
         startX = Plane3.getX();
         startY = Plane3.getY();
         //plane1.setVisible(true);
-         
-                
+
+
         targetX =  avoid1.getX();
         targetY =  avoid1.getY();
-        
+
         Plane1.setVisible(true);
         startX2 = Plane1.getX();
         startY2 = Plane1.getY();
         //plane1.setVisible(true);
-        
-                
+
+
         targetX2 =  Avoid2.getX();
         targetY2 =  Avoid2.getY();
-        
+
         Timer timer = new Timer(340, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -769,7 +768,7 @@ public class userInterface extends javax.swing.JPanel {
                 int x3 = Plane1.getX();
                 int y3 = Plane1.getY();
 
-                
+
                 long duration = System.currentTimeMillis() - startTime;
                 float progress = (float)duration / (float)PLAY_TIME;
 
@@ -781,81 +780,81 @@ public class userInterface extends javax.swing.JPanel {
 
                 x = startX + (int)Math.round((targetX - startX) * progress);
                 y = startY + (int)Math.round((targetY - startY) * progress);
-                        
-                
-                   
+
+
+
                 x3 = startX2 + (int)Math.round((targetX2 - startX2) * progress);
                 y3 = startY2 + (int)Math.round((targetY2 - startY2) * progress);
-                
-                
+
+
                 if(x== realCollisionAvoid.getX() || y== realCollisionAvoid.getY()){
-                   
-                    
-                     controlMessage.append("\nCollision Avoidance System Activated\n"); 
+
+
+                     controlMessage.append("\nCollision Avoidance System Activated\n");
                      String heading = JOptionPane.showInputDialog("Input Heading");
-        
+
                      String speed = JOptionPane.showInputDialog("Input speed");
-        
+
                     String altitude = JOptionPane.showInputDialog("Input Altitude");
-                   
-                   
+
+
                     controlMessage.append("Flight AA263 Ascend 2 meters North East");
-                    
-                    
-                    
-                    
+
+
+
+
                 }
                 Plane3.setLocation(x, y);
                 if(x == targetX && y == targetY){
-                    Plane3.setVisible(false);   
-                    
+                    Plane3.setVisible(false);
+
                 }
-                
-                
+
+
                 Plane1.setLocation(x3, y3);
                 if(x3 == targetX2 && y3 == targetY2){
                     Plane1.setVisible(false);
-                    
+
                 }
             }
 
-            
+
         });
-        
-        
+
+
         startTime = System.currentTimeMillis();
 
         timer.start();
-        
+
        speedPlane1LBL2.setText(String.valueOf(speed-10));
-              
-        
-        
+
+
+
     }//GEN-LAST:event_CollisionAvoidanceMouseClicked
 
     private void CollisionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CollisionMouseClicked
          Plane6.setVisible(true);
         Plane5.setVisible(true);
-        
-        
-        
-        
+
+
+
+
         startX = Plane6.getX();
         startY = Plane6.getY();
-        
+
         startX2 = Plane5.getX();
         startY2 = Plane5.getY();
-        
-       
+
+
         //plane1.setVisible(true);
 
         targetX = crashSpot.getX();
         targetY = crashSpot.getY();
-        
+
         targetX2 = crashSpot.getX();
         targetY2 = crashSpot.getY();
-        
-        
+
+
 
 
         //altitudeLB3.setText("400");
@@ -869,8 +868,8 @@ public class userInterface extends javax.swing.JPanel {
 
                 int x2 = Plane5.getX();
                 int y2 = Plane5.getY();
-              
-                
+
+
                 long duration = System.currentTimeMillis() - startTime;
                 float progress = (float)duration / (float)PLAY_TIME;
 
@@ -881,24 +880,24 @@ public class userInterface extends javax.swing.JPanel {
 
                 x = startX + (int)Math.round((targetX - startX) * progress);
                 y = startY + (int)Math.round((targetY - startY) * progress);
-                
+
                 x2 = startX2 + (int)Math.round((targetX - startX2) * progress);
                 y2 = startY2 + (int)Math.round((targetY - startY2) * progress);
-                
-                
+
+
                 Plane6.setLocation(x, y);
                 Plane5.setLocation(x2, y2);
-    
-                
-                
+
+
+
                 if(x == targetX && y == targetY)
                 {
-          
-                   
+
+
                    AudioInputStream audioInputStream = null;
                     try {
                          controlMessage.append("\nFlight AA263 has crashed\n");
-                        
+
                         explosionfire.setVisible(true);
                          Plane5.setVisible(false);
                             Plane6.setVisible(false);
@@ -921,12 +920,12 @@ public class userInterface extends javax.swing.JPanel {
                         }
                     }
                 }
-                   
-                
-                
-                
-                
-                
+
+
+
+
+
+
             }
         });
 
@@ -936,27 +935,27 @@ public class userInterface extends javax.swing.JPanel {
     }//GEN-LAST:event_CollisionMouseClicked
 
     private void requestingArrivalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_requestingArrivalMouseClicked
-        
-        
+
+
           Plane4.setVisible(true);
         landingRoute.setVisible(true);
        requestingArrival.setVisible(false);
         startX = Plane4.getX();
         startY = Plane4.getY();
-       
-        
-                
+
+
+
         targetX =  landingRoute.getX();
         targetY =  landingRoute.getY();
-        
-        
+
+
         Timer timer = new Timer(340, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int x = Plane4.getX();
                 int y = Plane4.getY();
 
-                
+
                 long duration = System.currentTimeMillis() - startTime;
                 float progress = (float)duration / (float)PLAY_TIME;
 
@@ -968,26 +967,26 @@ public class userInterface extends javax.swing.JPanel {
 
                 x = startX + (int)Math.round((targetX - startX) * progress);
                 y = startY + (int)Math.round((targetY - startY) * progress);
-                        
+
                 Plane4.setLocation(x, y);
                 if(x == targetX && y == targetY){
-                
+
                     controlMessage.append("\nFlight AA263 Requesting Landing\n");
                 }
             }
 
-            
+
         });
-        
-        
+
+
         startTime = System.currentTimeMillis();
 
         timer.start();
-        
+
        speedPlane1LBL2.setText(String.valueOf(speed-10));
-        
-        
-        
+
+
+
     }//GEN-LAST:event_requestingArrivalMouseClicked
 
     private void airportRunWayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_airportRunWayMouseClicked
@@ -997,19 +996,19 @@ public class userInterface extends javax.swing.JPanel {
         startX = Plane2.getX();
         startY = Plane2.getY();
         //plane1.setVisible(true);
-         
-                
+
+
         targetX =  airportRunWay.getX();
         targetY =  airportRunWay.getY();
-        
-        
+
+
         Timer timer = new Timer(340, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int x = Plane2.getX();
                 int y = Plane2.getY();
 
-                
+
                 long duration = System.currentTimeMillis() - startTime;
                 float progress = (float)duration / (float)PLAY_TIME;
 
@@ -1021,38 +1020,38 @@ public class userInterface extends javax.swing.JPanel {
 
                 x = startX + (int)Math.round((targetX - startX) * progress);
                 y = startY + (int)Math.round((targetY - startY) * progress);
-                        
+
                 Plane2.setLocation(x, y);
                 if(x == targetX && y == targetY){
-                    
+
                     controlMessage.append("\nFlight AA263 requesting take off");
                 }
             }
 
-            
+
         });
-        
-        
+
+
         startTime = System.currentTimeMillis();
 
         timer.start();
-        
+
        speedPlane1LBL2.setText(String.valueOf(speed-10));
     }//GEN-LAST:event_airportRunWayMouseClicked
 
     private void Plane2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Plane2MouseClicked
-       
+
         String heading = JOptionPane.showInputDialog("Input Heading");
-        
+
         String speed = JOptionPane.showInputDialog("Input speed");
-        
+
         String altitude = JOptionPane.showInputDialog("Input Altitude");
-            
+
     }//GEN-LAST:event_Plane2MouseClicked
 
 
-    
-  
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AircraftDeparture;
     private javax.swing.JButton AircraftLanding;

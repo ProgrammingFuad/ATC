@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 
 /**
  *
- * @author matankay
+ * @author Fuad Mohamoud
  */
 public class ChangeHeading extends javax.swing.JPanel {
 
@@ -114,9 +114,9 @@ public class ChangeHeading extends javax.swing.JPanel {
 
     private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
         // TODO add your handling code here:
-        
-    
-        
+
+
+
     }//GEN-LAST:event_jButton1MousePressed
 
 
@@ -131,21 +131,21 @@ public class ChangeHeading extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 
-    
-    
+
+
     public static void main (String [] args){
-        
+
         JFrame frame = new JFrame();
-        
+
         frame.setContentPane(new ChangeHeading());
-        
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+
         frame.pack();
-        
+
         frame.setVisible(true);
-        
+
     }
-    
-    
+
+
 }
